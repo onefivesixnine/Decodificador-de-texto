@@ -9,34 +9,34 @@
 </head>
 <body>
     <header>
-        <img class="imagem1" src="Logo.png" alt="logo Alura">
+        <img class="imagem1" src="./imagem/Logo.png" alt="logo Alura">
     </header>
     <main>
-    <div class="conteiner">
-        <section >
-            <input id="texto" placeholder="Digite seu texto"></input>
-            <p class="criterio"> <img src="exclamacao.png" alt="ponto de exclamação"> Letras minúsculas e sem acento.</p>
-            <button id="criptografars"  onclick="criptografar">Criptografar</button>
-            <button id="descriptografar" onclick="descriptografar"><p class="button">Descriptografar</p></button>
-        </section>
-    </div>
-        <div class="resultado">
-           
-            <img src="LupaDePesquisa.png" alt="Pessoa com uma lupa">
-            <h3>Nenhuma mensagem encontrada</h3>
-            <p class="p">Digite um texto que você deseja criptografar ou descriptografar.</p>
-            
-            
+        <div class="conteiner">
+            <section>
+                <textarea id="texto" cols="50" rows="15" placeholder="Digite seu texto"></textarea>
+                <p class="criterio">
+                    <img src="./imagem/pontoExclamacao.png" alt="ponto de exclamação"> Letras minúsculas e sem acento.
+                </p>
+                <button id="criptografar" onclick="criptografar()">Criptografar</button>
+                <button id="descriptografar" onclick="descriptografar()">Descriptografar</button>
+            </section>
         </div>
-        <div class="mostrarResultado">
-            <button id="Copiar" onclick="Copiar">Copiar</button>
+        <div class="resultado">
+            <img src="./imagem/LupaDePesquisa.png" alt="Pessoa com uma lupa">
+            <h3>Nenhuma mensagem encontrada</h3>
+            <div id="mensagem_informacao">
+                <p id="mensagem">Digite um texto que você deseja criptografar ou descriptografar.</p>
+            </div>
+        </div>
+        <div class="mostrarResultado" id="mensagemcriptografada">
+            <button id="textocopiar" onclick="Copiar()">Copiar</button>
         </div>
     </main>
     <footer>
         <h4>Desenvolvido por</h4>
         <h4><a href="https://www.linkedin.com/in/thiago-costa-5abc">Thiago Costa</a></h4>
     </footer>
-   
     <script src="script.js"></script>
 </body>
 </html>
