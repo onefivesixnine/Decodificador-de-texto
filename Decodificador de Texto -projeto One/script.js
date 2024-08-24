@@ -1,30 +1,56 @@
+const input = document.querySelector("#texto");
+const mensagem = document.querySelector("#mensagem");
+
 function criptografar() {
-   let Texto = document.getElementById('texto').value;
-   let criptografar = Texto
-        .replace(/e/g, "enter")
-        .replace(/i/g, "imes")
-        .replace(/a/g, "ai")
-        .replace(/o/g, "ober")
-        .replace(/u/g, "ufat");
-    document.getElementById('result-text').value = criptografar;
-    document.getElementById('result-container').style.display = 'block';
+    const texto = input.value;
+    
+    if (/[\u00C0-\u00FF]/.test(texto)) {
+        alert("Por favor, remova os acentos e tente novamente.");
+        return; 
+    }
+    const textoEncriptado = encriptar(texto);
+    if (mensagem) {
+        mensagem.innerHTML = `<p>${textoEncriptado}</p>`;
+    } else {
+        console.error("Elemento com ID 'mensagem' não encontrado.");
+    }
+    input.value = "";  
+}
+
+function encriptar(stringEncriptada) {
+    let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
+    stringEncriptada = stringEncriptada.toLowerCase();
+
+    for (let i = 0; i < matrizCodigo.length; i++) {
+        stringEncriptada = stringEncriptada.replaceAll(matrizCodigo[i][0], matrizCodigo[i][1]);
+    }
+    
+    return stringEncriptada;
 }
 
 function descriptografar() {
-    let Texto = document.getElementById('texto').value;
-           let descriptografar= Texto
-                .replace(/enter/g, "e")
-                .replace(/imes/g, "i")
-                .replace(/ai/g, "a")
-                .replace(/ober/g, "o")
-                .replace(/ufat/g, "u");
-            document.getElementById('mostrarResultado').value = descriptografar;
-            document.getElementById('mostrarResultado').style.display = 'block';
+    const textoDesencriptado = desencriptar(input.value);
+    if (mensagem) {
+        mensagem.innerHTML = `<p>${textoDesencriptado}</p>`;
+    } else {
+        console.error("Elemento com ID 'mensagem' não encontrado.");
+    }
+    input.value = "";
 }
 
-function copiar(id) {
-    let copiar = document.getElementById(id);
-            copiar.select();
-            document.execCommand('copy');
-            alert('Texto copiado para a área de transferência!');
+function desencriptar(stringDesencriptada) {
+    let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
+    stringDesencriptada = stringDesencriptada.toLowerCase();
+
+    for (let i = 0; i < matrizCodigo.length; i++) {
+        stringDesencriptada = stringDesencriptada.replaceAll(matrizCodigo[i][1], matrizCodigo[i][0]);
+    }
+
+    return stringDesencriptada;
+}
+
+function Copiar() {
+    const textoCopiado = document.querySelector("#mensagem p").textContent;
+    navigator.clipboard.writeText(textoCopiado);
+    alert("Texto copiado para área de transferência.");
 }
