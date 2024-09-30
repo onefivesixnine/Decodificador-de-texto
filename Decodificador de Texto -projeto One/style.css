@@ -43,6 +43,13 @@ main {
     padding: 20px;
 }
 
+
+@media(){
+    .lupa {
+         visibility: hidden;
+    }
+}
+
 #mensagem {
     font-size: 16px;
     text-align: center;
